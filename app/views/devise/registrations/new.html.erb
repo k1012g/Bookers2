@@ -1,0 +1,80 @@
+<!-- 登録画面のファイル -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <header class="navbar nabvar-fixed-top navbar-inverse">
+    <div class="container">
+      <span class="col-xs-7" style="font-size: 20px; color: #fff ;">Bookers</span>
+      <ul class="col-xs-5">
+        <% if user_signed_in? %>
+          <li style="display: inline-block; padding: 15px;">
+            <%= link_to "Home",user_path(current_user),{class: "text-muted glyphicon glyphicon-home" } %>
+          </li>
+          <li style="display: inline-block; padding: 15px;">
+            <%= link_to "Users",users_path,{class: "text-muted glyphicon glyphicon-user"} %>
+            </li>
+            <li style="display: inline-block; padding: 15px;">
+              <%= link_to "Books",books_path,{class: "text-muted glyphicon glyphicon-book"} %>
+            </li>
+          <li style="display: inline-block; padding: 15px;">
+                <%= link_to "logout", destroy_user_session_path, method: :delete %>
+            </li>
+        <% else %>
+          <li style="display: inline-block; padding: 15px;">
+            <a class="text-muted glyphicon glyphicon-home" href="/">&nbsp;Home</a>
+          </li>
+          <li style="display: inline-block; padding: 15px;">
+            <a class="text-muted glyphicon glyphicon-link" href="/home/about">&nbsp;About</a>
+          </li>
+          <li style="display: inline-block; padding: 15px;">
+                <%= link_to " sign up", new_user_registration_path ,:class => "text-muted glyphicon glyphicon-edit" %>
+            </li>
+            <li style="display: inline-block; padding: 15px;">
+                <%= link_to " login", new_user_session_path ,:class => "text-muted glyphicon glyphicon-log-in" %>
+            </li>
+        <%  end %>
+      </ul>
+    </div>
+  </header>
+  <div class="container">
+    <h2>Sign Up</h2>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+    <div class="field" style="margin-bottom: 10px;">
+      <%= f.label :name %><br />
+      <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
+    </div>
+    <div class="field" style="margin-bottom: 10px;">
+      <%= f.label :email %><br />
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field" style="margin-bottom: 10px;">
+      <%= f.label :password %>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %> characters minimum)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+
+    <div class="field" style="margin-bottom: 10px;">
+      <%= f.label :password_confirmation %><br />
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+
+    <div class="actions" style="margin-bottom: 10px;">
+      <%= f.submit "Sign up", {class: "btn btn-success"} %>
+    </div>
+    <% end %>
+    <%= render "devise/shared/links" %>
+  </div>
+  <div class="row">
+    <div class="col-xs-3 col-xs-offset-9">
+      <p>CopyRight Infratop.inc</p>
+    </div>
+  </div>
+</body>
+</html>

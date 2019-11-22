@@ -1,0 +1,51 @@
+<!-- About画面のファイル -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<header class="navbar nabvar-fixed-top navbar-inverse">
+    <div class="container">
+	    <span class="col-xs-7" style="font-size: 20px; color: #fff ;">Bookers</span>
+	    <ul class="col-xs-5">
+        <% if user_signed_in? %>
+          <li style="display: inline-block; padding: 15px;">
+            <%= link_to "Home",user_path(current_user),{class: "text-muted glyphicon glyphicon-home" } %>
+          </li>
+          <li style="display: inline-block; padding: 15px;">
+            <%= link_to "Users",users_path,{class: "text-muted glyphicon glyphicon-user"} %>
+            </li>
+            <li style="display: inline-block; padding: 15px;">
+              <%= link_to "Books",books_path,{class: "text-muted glyphicon glyphicon-book"} %>
+            </li>
+          <li style="display: inline-block; padding: 15px;">
+                <%= link_to "logout", destroy_user_session_path, method: :delete %>
+            </li>
+        <% else %>
+          <li style="display: inline-block; padding: 15px;">
+            <a class="text-muted glyphicon glyphicon-home" href="/">Home</a>
+          </li>
+          <li style="display: inline-block; padding: 15px;">
+            <a class="text-muted glyphicon glyphicon-link" href="/home/about">About</a>
+          </li>
+          <li style="display: inline-block; padding: 15px;">
+                <%= link_to "sign up", new_user_registration_path ,:class => "text-muted glyphicon glyphicon-edit"  %>
+            </li>
+            <li style="display: inline-block; padding: 15px;">
+                <%= link_to " login", new_user_session_path ,:class => "text-muted glyphicon glyphicon-log-in"  %>
+            </li>
+        	<%  end %>
+	    </ul>
+	</div>
+	</header>
+	<div class="container">
+		<h1>Welcome to<span class="glyphicon glyphicon-book"></span>Bookers!</h1>
+	</div>
+	<div class="row footer">
+		<div class="col-xs-3 col-xs-offset-9">
+			<p>CopyRight Infratop.inc</p>
+		</div>
+	</div>
+</body>
+</html>

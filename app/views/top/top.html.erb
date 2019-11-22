@@ -1,0 +1,65 @@
+<!-- トップ画面のファイル -->
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<header class="navbar nabvar-fixed-top navbar-inverse">
+    <div class="container">
+	    <span class="col-xs-7" style="font-size: 20px; color: #fff ;">Bookers</span>
+	    <ul class="col-xs-5">
+        <% if user_signed_in? %>
+          <li style="display: inline-block; padding: 15px;">
+            <%= link_to " Home",user_path(current_user),{class: "text-muted glyphicon glyphicon-home" } %>
+          </li>
+          <li style="display: inline-block; padding: 15px;">
+            <%= link_to " Users",users_path,{class: "text-muted glyphicon glyphicon-user"} %>
+            </li>
+            <li style="display: inline-block; padding: 15px;">
+              <%= link_to " Books",books_path,{class: "text-muted glyphicon glyphicon-book"} %>
+            </li>
+          <li style="display: inline-block; padding: 15px;">
+                <%= link_to " logout", destroy_user_session_path, method: :delete ,:class => "text-muted glyphicon glyphicon-log-out" %>
+            </li>
+        <% else %>
+          <li style="display: inline-block; padding: 15px;">
+            <a class="text-muted glyphicon glyphicon-home" href="/">&nbsp;Home</a>
+          </li>
+          <li style="display: inline-block; padding: 15px;">
+            <a class="text-muted glyphicon glyphicon-link" href="/home/about">&nbsp;About</a>
+          </li>
+          <li style="display: inline-block; padding: 15px;"><%= link_to " sign up", new_user_registration_path, :class => "text-muted glyphicon glyphicon-edit"  %>
+            </li>
+            <li style="display: inline-block; padding: 15px;">
+                <%= link_to " login", new_user_session_path ,:class => "text-muted glyphicon glyphicon-log-out" %>
+            </li>
+        	<%  end %>
+	    </ul>
+	</div>
+	</header>
+	<% if flash[:notice] %>
+        <%= flash[:notice] %>
+    <% end %>
+    <div class="container">
+    	<div class="row">
+    		<div class="top-message col-md-offset-3 col-md-6" style="margin-left: 242.5px; padding: 0 15px;">
+    			<h1 style="margin: 20px 0 10px 0;">Welcome to<br><span class="glyphicon glyphicon-book" ></span>Bookers !!</h1>
+    			<p style="margin-bottom: 10px;">In<span class="glyphicon glyphicon-book"></span>Bookers,</p>
+    			<p style="margin-bottom: 10px;">you can share and exchange your opinion, inpressions, and emotions<br><p>about various books!</p></p>
+				<div class="login-box" style="padding: 6px 12px;">
+					<%= link_to "Log in", new_user_session_path, {class: "btn btn-info col-xs-10 col-xs-offset-1"}%>
+				</div>
+				<div class="signup-box" style="padding: 6px 12px;">
+					<%= link_to "Sign up", new_user_registration_path, {class: "btn btn-success col-xs-10 col-xs-offset-1"}%>
+				</div>
+			</div>
+		</div>
+		<div class="row footer">
+			<div class="col-xs-3 col-xs-offset-9" style=" margin-bottom: 10px;padding: 0 15px;">
+				<p>CopyRight Infratop.inc</p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
