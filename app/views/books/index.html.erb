@@ -97,6 +97,21 @@
 					<td style="padding: 10px;">
 						<%= book.body %>
 					</td>
+					<% if book.favorited_by?(current_user) %>
+						<td>
+							<%= link_to favorite_path(book), method: :delete do %>
+								<span>❤️</span>
+								<%= book.favorites.count %>
+							<% end %>
+						</td>
+					<% else %>
+						<td>
+							<%= link_to favorites_path(book), method: :post do %>
+								<span>♡</span>
+								<%= book.favorites.count %>
+							<% end %>
+						</td>
+					<% end %>
 		    	</tr>
 		    	<% end %>
 			</table>

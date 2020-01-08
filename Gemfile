@@ -64,6 +64,12 @@ group :test do
   gem 'rails-controller-testing'
 end
 
+# group :production do
+
+#   gem 'mysql2'
+
+# end
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
@@ -74,3 +80,5 @@ gem "refile-mini_magick"
 
 gem 'bootstrap-sass', '~> 3.3.6'
 gem 'jquery-rails'
+
+gem "jquery-rails"

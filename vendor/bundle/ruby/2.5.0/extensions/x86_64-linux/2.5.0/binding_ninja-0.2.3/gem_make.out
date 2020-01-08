@@ -1,0 +1,15 @@
+current directory: /vagrant/Bookers2/vendor/bundle/ruby/2.5.0/gems/binding_ninja-0.2.3/ext/binding_ninja
+/usr/bin/ruby2.5 -r ./siteconf20191123-19180-1ly51oj.rb extconf.rb
+creating Makefile
+
+current directory: /vagrant/Bookers2/vendor/bundle/ruby/2.5.0/gems/binding_ninja-0.2.3/ext/binding_ninja
+make "DESTDIR=" clean
+
+current directory: /vagrant/Bookers2/vendor/bundle/ruby/2.5.0/gems/binding_ninja-0.2.3/ext/binding_ninja
+make "DESTDIR="
+compiling binding_ninja.c
+linking shared-object binding_ninja/binding_ninja.so
+
+current directory: /vagrant/Bookers2/vendor/bundle/ruby/2.5.0/gems/binding_ninja-0.2.3/ext/binding_ninja
+make "DESTDIR=" install
+/usr/bin/install -c -m 0755 binding_ninja.so ./.gem.20191123-19180-1lrqy0y/binding_ninja
