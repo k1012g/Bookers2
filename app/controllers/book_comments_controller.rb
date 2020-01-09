@@ -9,7 +9,7 @@ class BookCommentsController < ApplicationController
 	end
 
 	def destroy
-		comment = BookComment.find(params[:format])
+		comment = BookComment.find(params[:id])
 		comment.destroy
 		redirect_to book_path(params[:book_id])
 	end
