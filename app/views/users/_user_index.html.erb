@@ -1,7 +1,9 @@
 <h2 style="margin: 20 0 10px 0;">Users</h2>
 <table class="table">
-	<th>image</th>
-	<th>name</th>
+	<th>Image</th>
+	<th>Name</th>
+	<th>Following</th>
+	<th>Follower</th>
 	<th></th>
 	<th></th>
 	<% users.each do |user| %>
@@ -11,6 +13,12 @@
 		</td>
 		<td>
 			<%= user.name %>
+		</td>
+		<td>
+			<%= user.followings.count %>
+		</td>
+		<td>
+			<%= user.followers.count %>
 		</td>
 		<td>
 			<% if user != current_user %>
