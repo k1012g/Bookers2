@@ -120,9 +120,10 @@
 					<% @book_show.book_comments.each do |comments| %>
 						<div style="border: 1px solid black; padding: 5px 10px;">
 							<%= comments.comment %>
+							<%= comments.user_id %>
 						</div>
 						<% if current_user.id == comments.user_id %>
-							<%= link_to "コメント削除", book_book_comments_path(@book_show.id), method: :delete %>
+							<%= link_to "コメント削除", book_book_comments_path(@book_show,comments.id), method: :delete %>
 						<% end %>
 						<br>
 						<br>
