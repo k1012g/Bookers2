@@ -1,0 +1,33 @@
+<%= render 'layouts/header' %>
+<div class="container">
+	<h2><strong>フォロワー <%= @follower.count %>人</strong></h2>
+	<% if @follower.blank? %>
+		<h3><strong>あなたをフォローしている人はいません。</strong></h3>
+	<% else %>
+		<% @follower.each do |f| %>
+			<table class="table" style="width: 500px;">
+				<tr>
+					<th>User ID</th>
+					<th>User Name</th>
+					<th></th>
+				</tr>
+				<tr>
+					<td><%= f.id %></td>
+					<td><%= f.name %></td>
+					<% if current_user != f %>
+						<% if f.followed_by?(current_user) %>
+							<td>
+								<%= link_to "フォロー中", user_relationships_path(f.id), method: :delete, class: "btn btn-primary" %>
+							</td>
+						<% else %>
+							<td>
+								<%=link_to "フォローする", user_relationships_path(f.id), method: :post, class: "btn btn-default follow" %>
+							</td>
+						<% end %>
+					<% end %>
+				</tr>
+			</table>
+		<% end %>
+	<% end %>
+</div>
+<%= render 'layouts/footer' %>

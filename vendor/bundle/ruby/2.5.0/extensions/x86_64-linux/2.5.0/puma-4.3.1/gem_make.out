@@ -1,0 +1,30 @@
+current directory: /vagrant/Bookers2/vendor/bundle/ruby/2.5.0/gems/puma-4.3.1/ext/puma_http11
+/usr/bin/ruby2.5 -r ./siteconf20200109-2566-1urheof.rb extconf.rb
+checking for BIO_read() in -lcrypto... no
+checking for BIO_read() in -llibeay32... no
+creating Makefile
+
+current directory: /vagrant/Bookers2/vendor/bundle/ruby/2.5.0/gems/puma-4.3.1/ext/puma_http11
+make "DESTDIR=" clean
+make: Warning: File 'Makefile' has modification time 0.77 s in the future
+make: warning:  Clock skew detected.  Your build may be incomplete.
+
+current directory: /vagrant/Bookers2/vendor/bundle/ruby/2.5.0/gems/puma-4.3.1/ext/puma_http11
+make "DESTDIR="
+make: Warning: File 'Makefile' has modification time 0.75 s in the future
+compiling http11_parser.c
+compiling io_buffer.c
+compiling mini_ssl.c
+compiling puma_http11.c
+puma_http11.c: In function ‘http_field’:
+puma_http11.c:203:22: warning: implicit declaration of function ‘isspace’ [-Wimplicit-function-declaration]
+   while (vlen > 0 && isspace(value[vlen - 1])) vlen--;
+                      ^~~~~~~
+linking shared-object puma/puma_http11.so
+make: warning:  Clock skew detected.  Your build may be incomplete.
+
+current directory: /vagrant/Bookers2/vendor/bundle/ruby/2.5.0/gems/puma-4.3.1/ext/puma_http11
+make "DESTDIR=" install
+make: Warning: File 'Makefile' has modification time 0.21 s in the future
+/usr/bin/install -c -m 0755 puma_http11.so ./.gem.20200109-2566-1vqr6nx/puma
+make: warning:  Clock skew detected.  Your build may be incomplete.
