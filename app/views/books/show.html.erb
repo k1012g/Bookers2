@@ -109,8 +109,33 @@
 						<td><%= link_to "edit", edit_book_path %></td>
 						<td><%= link_to "destroy", book_path, method: :delete %></td>
 					<% end %>
+					<td>
+						コメント数 : <%= @book_show.book_comments.count %>
+					</td>
 				</tr>
 			</table>
+			<div class="col-xs-12">
+				<div class="col-xs-6">
+					<h3><strong>コメント一覧</strong></h3>
+					<% @book_show.book_comments.each do |comments| %>
+						<div style="border: 1px solid black; padding: 5px 10px;">
+							<%= comments.comment %>
+						</div>
+						<% if current_user.id == comments.user_id %>
+							<%= link_to "コメント削除", book_book_comments_path(@book_show.id), method: :delete %>
+						<% end %>
+						<br>
+						<br>
+					<% end %>
+				</div>
+				<div class="col-xs-6">
+					<h3><strong>コメントを投稿する</strong></h3>
+					<%= form_for [@book_show, @book_comment] do |c| %>
+						<%= c.text_area :comment, style: "width: 400px; height: 200px;" %>
+						<%= c.submit "送信" %>
+					<% end %>
+				</div>
+			</div>
 		</div>
 	<div class="row footer">
 	  <div class="col-xs-3 col-xs-offset-9">
