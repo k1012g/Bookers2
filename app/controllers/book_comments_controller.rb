@@ -20,7 +20,7 @@ class BookCommentsController < ApplicationController
 	end
 
 	def correct_user
-		comment = BookComment.find(params[:format])
+		comment = BookComment.find(params[:id])
 		if current_user.id != comment.user_id
 			redirect_to user_path(current_user.id)
 		end

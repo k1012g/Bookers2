@@ -1,0 +1,14 @@
+<h2 style="margin: 20px 0 10px 0;">New Book</h2>
+<%= form_for (book) do |f| %>
+	<div class="row">
+		<label>Title</label>
+		<%= f.text_field :title, {class: "col-xs-12"} %>
+	</div>
+	<div class="row" style="margin-bottom: 10px;">
+		<label>Opinion</label>
+		<%= f.text_area :body, {class: "col-xs-12"} %>
+	</div>
+	<div class="row">
+		<%= f.submit "Create Book",{class: "btn btn-primary col-xs-12"} %>
+	</div>
+<% end %>

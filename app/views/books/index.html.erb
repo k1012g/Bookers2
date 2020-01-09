@@ -1,129 +1,15 @@
-<!-- ブック一覧のファイル -->
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-	<header class="navbar nabvar-fixed-top navbar-inverse">
-		<div class="container">
-			<span class="col-xs-7" style="font-size: 20px; color: #fff ;">Bookers</span>
-			<ul class="col-xs-5">
-				<% if user_signed_in? %>
-					<li style="display: inline-block; padding: 15px;">
-						<%= link_to " Home",user_path(current_user),{class: "text-muted glyphicon glyphicon-home" } %>
-					</li>
-					<li style="display: inline-block; padding: 15px;">
-						<%= link_to " Users",users_path,{class: "text-muted glyphicon glyphicon-user"} %>
-		   			</li>
-		   			<li style="display: inline-block; padding: 15px;">
-		   				<%= link_to " Books",books_path,{class: "text-muted glyphicon glyphicon-book"} %>
-		   			</li>
-					<li style="display: inline-block; padding: 15px;">
-		        		<%= link_to " logout", destroy_user_session_path, method: :delete ,:class => "text-muted glyphicon glyphicon-log-out" %>
-		   			</li>
-				<% else %>
-					<li>
-						<a href="/">Home</a>
-					</li>
-					<li>
-						<a href="/home/about">About</a>
-					</li>
-					<li class="">
-				        <%= link_to "sign up", new_user_registration_path %>
-				    </li>
-				    <li class="">
-				        <%= link_to "login", new_user_session_path %>
-				    </li>
-				<%  end %>
-			</ul>
-		</div>
-	</header>
-	<div class="container">
-		<% if @book.errors.any? %>
-	        <h2><%= @book.errors.count %> errors prohibited this obj from being saved:</h2>
-	        <% @book.errors.full_messages.each do |msg| %>
-	        	<li><%= msg %></li>
-		    <% end %>
-		<% end %>
-		<div class="col-xs-3" style="padding: 0 15px;">
-				<h2 style="margin: 20px 0 10px 0;">User info</h2>
-				<div class="img-box">
-					<%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.png" %>
-				</div>
-				<table class="table table-border">
-					<th>Name</th>
-					<td><%= @user.name %></td>
-				</table>
-				<table class="table table-border">
-					<th>Introduction</th>
-					<td>
-						<%= @user.introduction %>
-					</td>
-				</table>
-				<div class="row">
-				<%= link_to "",edit_user_path(@user.id), {class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench"}%>
-				</div>
-				<h2 style="margin: 20px 0 10px 0;">New Book</h2>
-				<%= form_for (@book) do |f| %>
-				<div class="row">
-					<label>Title</label>
-					<%= f.text_field :title, {class: "col-xs-12"} %>
-				</div>
-				<div class="row" style="margin-bottom: 10px;">
-					<label>Opinion</label>
-					<%= f.text_area :body, {class: "col-xs-12"} %>
-				</div>
-				<div class="row">
-					<%= f.submit "Create Book",{class: "btn btn-primary col-xs-12"} %>
-				</div>
-			<% end %>
-		</div>
-		<div class="col-xs-9">
-			<h2>Books</h2>
-			<table class="table">
-				<th></th>
-				<th>Title</th>
-				<th>Opinion</th>
-				<tr>
-					<% @books.each do |book| %>
-					<td>
-						　<!-- 画像リンクをつけたい -->
-						<a><%= attachment_image_tag book.user, :profile_image, :fill, 60, 60, format: 'jpeg', fallback: "no_image.png" %></a>
-					</td>
-					<td style="padding: 10px;">
-						<%= link_to book.title, book_path(book.id) %>
-					</td>
-					<td style="padding: 10px;">
-						<%= book.body %>
-					</td>
-					<% if book.favorited_by?(current_user) %>
-						<td>
-							<%= link_to favorite_path(book), method: :delete do %>
-								<span>❤️</span>
-								<%= book.favorites.count %>
-							<% end %>
-						</td>
-					<% else %>
-						<td>
-							<%= link_to favorites_path(book), method: :post do %>
-								<span>♡</span>
-								<%= book.favorites.count %>
-							<% end %>
-						</td>
-					<% end %>
-					<td>
-						コメント数 : <%= book.book_comments.count %>
-					</td>
-		    	</tr>
-		    	<% end %>
-			</table>
-		</div>
+<%= render 'layouts/header' %>
+<div class="container">
+	<% if @book.errors.any? %>
+        <h2><%= @book.errors.count %> errors prohibited this obj from being saved:</h2>
+        <% @book.errors.full_messages.each do |msg| %>
+        	<li><%= msg %></li>
+	    <% end %>
+	<% end %>
+	<div class="col-xs-3" style="padding: 0 15px;">
+		<%= render 'users/user_info', user: @user,now: ''%>
+		<%= render 'books/book_form', book: @book %>
 	</div>
-	<div class="row footer">
-	  	<div class="col-xs-3 col-xs-offset-9">
-	    	<p>CopyRight Infratop.inc</p>
-  		</div>
-	</div>
-</body>
-</html>
+	<%= render 'book_index', books: @books %>
+</div>
+<%= render 'layouts/footer' %>

@@ -1,0 +1,27 @@
+<h2 style="margin: 20px 0 10px 0;">User info</h2>
+<div class="img-box">
+	<%= attachment_image_tag user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.png" %>
+</div>
+<table class="table table-border">
+	<tr>
+		<th>Name</th>
+		<td><%= user.name %></td>
+	</tr>
+	<tr>
+		<th>Introduction</th>
+		<td>
+			<%= user.introduction %>
+		</td>
+	</tr>
+	<tr>
+		<th>Following</th>
+		<td></td>
+	</tr>
+	<tr>
+		<th>Follower</th>
+		<td></td>
+	</tr>
+</table>
+<div class="">
+	<%= link_to "",edit_user_path(user.id), {class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench"}%>
+</div>
