@@ -1,13 +1,15 @@
 class SearchController < ApplicationController
 	def search
+		@users = User.all
+		@books = Book.all
 		@model = params[:model]
 		@input = params[:input]
 		@sort = params[:sort]
-		@searches = search_for(@model, @input, @sort)
+		@searches = searching(@model, @input, @sort)
 	end
 
 	private
-	def search_for(model, input, sort)
+	def searching(model, input, sort)
 		if model == 'user'
 			if sort == 'all'
 				User.where(name: input)

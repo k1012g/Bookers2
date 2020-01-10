@@ -3,7 +3,7 @@
 	<% if @model == 'user' %>
 		<% if @input.blank? %>
 			<h4><strong>全件を表示しています</strong></h4>
-			<%= render 'users/user_index', users: @searches %>
+			<%= render 'users/user_index', users: @users %>
 		<% else %>
 			<h4><strong>"<%= @input %>"の検索結果</strong></h4>
 			<%= render 'users/user_index', users: @searches %>
@@ -11,7 +11,7 @@
 	<% elsif @model == 'book' %>
 		<% if @input.blank? %>
 			<h4><strong>全件を表示しています</strong></h4>
-			<%= render 'books/book_index', books: @searches %>
+			<%= render 'books/book_index', books: @books %>
 		<% else %>
 			<h4><strong>"<%= @input %>"の検索結果</strong></h4>
 			<%= render 'books/book_index', books: @searches %>
