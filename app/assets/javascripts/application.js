@@ -18,8 +18,21 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-$(function(){
-	$('.jquery').on('click',function(){
-		$(this).css('color','red');
-	});
-});
+// $(function(){
+// 	$('.jquery').on('click',function(){
+// 		$(this).css('color','red');
+// 	});
+// });
+
+var xhr = new XMLHttpRequest();
+
+xhr.open('GET', '/');
+xhr.send();
+
+xhr.onreadystatechange = function(){
+
+	if (xhr.readyState === 4 && xhr.status === 200) {
+		console.log(xhr.responseText);
+	}
+
+}

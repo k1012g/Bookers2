@@ -7,8 +7,6 @@
 		<%= render 'user_info', user: @user,now: ''%>
 		<%= render 'books/book_form', book: @book %>
 	</div>
-	<div class="col-xs-9">
-		<%= render 'books/book_index', books: @books %>
-	</div>
+	<%= render 'books/book_index', books: @books %>
 </div>
 <%= render 'layouts/footer' %>
