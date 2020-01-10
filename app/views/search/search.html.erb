@@ -1,0 +1,21 @@
+<%= render 'layouts/header' %>
+<div class="container">
+	<% if @model == 'user' %>
+		<% if @input.blank? %>
+			<h4><strong>全件を表示しています</strong></h4>
+			<%= render 'users/user_index', users: @searches %>
+		<% else %>
+			<h4><strong>"<%= @input %>"の検索結果</strong></h4>
+			<%= render 'users/user_index', users: @searches %>
+		<% end %>
+	<% elsif @model == 'book' %>
+		<% if @input.blank? %>
+			<h4><strong>全件を表示しています</strong></h4>
+			<%= render 'books/book_index', books: @searches %>
+		<% else %>
+			<h4><strong>"<%= @input %>"の検索結果</strong></h4>
+			<%= render 'books/book_index', books: @searches %>
+		<% end %>
+	<% end %>
+</div>
+<%= render 'layouts/footer' %>

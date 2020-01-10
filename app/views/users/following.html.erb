@@ -14,7 +14,7 @@
 				</tr>
 				<tr>
 					<td><%= f.id %></td>
-					<td> <%= f.name %></td>
+					<td><%= link_to "#{f.name}", user_path(f.id) %></td>
 					<% if current_user != f %>
 						<% if f.followed_by?(current_user) %>
 							<td>
