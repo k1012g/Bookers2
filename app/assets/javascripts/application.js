@@ -24,15 +24,15 @@
 // 	});
 // });
 
-var xhr = new XMLHttpRequest();
+// var xhr = new XMLHttpRequest();
 
-xhr.open('GET', '/');
-xhr.send();
+// xhr.open('GET', '/');
+// xhr.send();
 
-xhr.onreadystatechange = function(){
+// xhr.onreadystatechange = function(){
 
-	if (xhr.readyState === 4 && xhr.status === 200) {
-		console.log(xhr.responseText);
-	}
+// 	if (xhr.readyState === 4 && xhr.status === 200) {
+// 		console.log(xhr.responseText);
+// 	}
 
-}
+// }

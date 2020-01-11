@@ -13,21 +13,11 @@
 		</td>
 		<td><%= link_to book_show.title, book_path(book_show) %></td>
 		<td><%= book_show.body %></td>
-		<% if book_show.favorited_by?(current_user) %>
-			<td>
-				<%= link_to book_favorites_path(book_show), method: :delete do %>
-					<span>❤️</span>
-					<%= book_show.favorites.count %>
-				<% end %>
-			</td>
-		<% else %>
-			<td>
-				<%= link_to book_favorites_path(book_show), method: :post do %>
-					<span>♡</span>
-					<%= book_show.favorites.count %>
-				<% end %>
-			</td>
-		<% end %>
+		<td>
+			<div id="favorites_<%= book_show.id %>">
+				<%= render 'favorites/favorites',book_show: book_show %>
+			</div>
+		</td>
 		<% if current_user == user %>
 			<td><%= link_to "edit", edit_book_path %></td>
 			<td><%= link_to "destroy", book_path, method: :delete %></td>

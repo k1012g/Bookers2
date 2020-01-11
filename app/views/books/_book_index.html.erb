@@ -20,21 +20,11 @@
 			<td style="padding: 10px;">
 				<%= book.body %>
 			</td>
-			<% if book.favorited_by?(current_user) %>
-				<td>
-					<%= link_to book_favorites_path(book), method: :delete do %>
-						<span>❤️</span>
-						<%= book.favorites.count %>
-					<% end %>
-				</td>
-			<% else %>
-				<td>
-					<%= link_to book_favorites_path(book), method: :post do %>
-						<span>♡</span>
-						<%= book.favorites.count %>
-					<% end %>
-				</td>
-			<% end %>
+			<td>
+				<div id="favorites_<%= book.id %>">
+					<%= render 'favorites/favorites',book_show: book %>
+				</div>
+			</td>
 			<td>
 				コメント数 : <%= book.book_comments.count %>
 			</td>
