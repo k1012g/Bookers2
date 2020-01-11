@@ -1,1 +1,1 @@
-$('#favorites_<%= book_show.id %>').html("<%= j(render partial: 'favorites/favorites', book_show: book_show) %> ");
+$('#favorites_<%= @book_show.id %>').html("<%= j(render 'favorites/favorites', book_show: @book_show) %> ");
