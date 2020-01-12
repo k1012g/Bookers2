@@ -16,12 +16,15 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
 
- *{
+*{
  	margin: 0;
  	padding: 0;
- }
+}
 
- .follow{
- 	background-color: white;
- 	color: blue;
- }
+.follow{
+	background-color: white;
+	color: blue;
+}
+ #map{
+	  height: 400px;
+}

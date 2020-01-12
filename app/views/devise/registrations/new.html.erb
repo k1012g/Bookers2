@@ -1,44 +1,37 @@
-<!-- 登録画面のファイル -->
-<!DOCTYPE html>
-<html>
-<head>
-  <title></title>
-</head>
-<body>
-  <header class="navbar nabvar-fixed-top navbar-inverse">
-    <div class="container">
-      <span class="col-xs-7" style="font-size: 20px; color: #fff ;">Bookers</span>
-      <ul class="col-xs-5">
-        <% if user_signed_in? %>
-          <li style="display: inline-block; padding: 15px;">
-            <%= link_to "Home",user_path(current_user),{class: "text-muted glyphicon glyphicon-home" } %>
+<header class="navbar nabvar-fixed-top navbar-inverse">
+  <div class="container">
+    <span class="col-xs-7" style="font-size: 20px; color: #fff ;">Bookers</span>
+    <ul class="col-xs-5">
+      <% if user_signed_in? %>
+        <li style="display: inline-block; padding: 15px;">
+          <%= link_to "Home",user_path(current_user),{class: "text-muted glyphicon glyphicon-home" } %>
+        </li>
+        <li style="display: inline-block; padding: 15px;">
+          <%= link_to "Users",users_path,{class: "text-muted glyphicon glyphicon-user"} %>
           </li>
           <li style="display: inline-block; padding: 15px;">
-            <%= link_to "Users",users_path,{class: "text-muted glyphicon glyphicon-user"} %>
-            </li>
-            <li style="display: inline-block; padding: 15px;">
-              <%= link_to "Books",books_path,{class: "text-muted glyphicon glyphicon-book"} %>
-            </li>
-          <li style="display: inline-block; padding: 15px;">
-                <%= link_to "logout", destroy_user_session_path, method: :delete %>
-            </li>
-        <% else %>
-          <li style="display: inline-block; padding: 15px;">
-            <a class="text-muted glyphicon glyphicon-home" href="/">&nbsp;Home</a>
+            <%= link_to "Books",books_path,{class: "text-muted glyphicon glyphicon-book"} %>
+          </li>
+        <li style="display: inline-block; padding: 15px;">
+              <%= link_to "logout", destroy_user_session_path, method: :delete %>
+          </li>
+      <% else %>
+        <li style="display: inline-block; padding: 15px;">
+          <a class="text-muted glyphicon glyphicon-home" href="/">&nbsp;Home</a>
+        </li>
+        <li style="display: inline-block; padding: 15px;">
+          <a class="text-muted glyphicon glyphicon-link" href="/home/about">&nbsp;About</a>
+        </li>
+        <li style="display: inline-block; padding: 15px;">
+              <%= link_to " sign up", new_user_registration_path ,:class => "text-muted glyphicon glyphicon-edit" %>
           </li>
           <li style="display: inline-block; padding: 15px;">
-            <a class="text-muted glyphicon glyphicon-link" href="/home/about">&nbsp;About</a>
+              <%= link_to " login", new_user_session_path ,:class => "text-muted glyphicon glyphicon-log-in" %>
           </li>
-          <li style="display: inline-block; padding: 15px;">
-                <%= link_to " sign up", new_user_registration_path ,:class => "text-muted glyphicon glyphicon-edit" %>
-            </li>
-            <li style="display: inline-block; padding: 15px;">
-                <%= link_to " login", new_user_session_path ,:class => "text-muted glyphicon glyphicon-log-in" %>
-            </li>
-        <%  end %>
-      </ul>
-    </div>
-  </header>
+      <%  end %>
+    </ul>
+  </div>
+</header>
   <div class="container">
     <h2>Sign Up</h2>
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
@@ -47,9 +40,30 @@
       <%= f.label :name %><br />
       <%= f.text_field :name, autofocus: true, autocomplete: "name" %>
     </div>
+
     <div class="field" style="margin-bottom: 10px;">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+      <%= f.email_field :email, autocomplete: "email" %>
+    </div>
+
+    <div class="filed" style="margin-bottom: 10px;">
+      <%= f.label :postal_code %><br>
+      <%= f.text_field :postal_code, autofocus: true, placeholder: 'postal_code', class: "postal_code", id: "address_zipcode" %>
+    </div>
+
+    <div class="field" style="margin-bottom: 10px;">
+      <%= f.label :prefecture %><br>
+      <%= f.collection_select :prefecture, JpPrefecture::Prefecture.all, :name, :name, class: "address", id: "user_prefecture" %>
+    </div>
+
+    <div class="filed" style="margin-bottom: 10px">
+      <%= f.label :city %><br>
+      <%= f.text_field :city, id: "address_city" %>
+    </div>
+
+    <div class="filed" style="margin-bottom: 10px;">
+      <%= f.label :street %><br>
+      <%= f.text_field :street %>
     </div>
 
     <div class="field" style="margin-bottom: 10px;">
@@ -71,10 +85,4 @@
     <% end %>
     <%= render "devise/shared/links" %>
   </div>
-  <div class="row">
-    <div class="col-xs-3 col-xs-offset-9">
-      <p>CopyRight Infratop.inc</p>
-    </div>
-  </div>
-</body>
-</html>
+<%= render 'layouts/footer' %>
