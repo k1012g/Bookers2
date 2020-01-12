@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
 	validates :name, presence: true, length: { in: 2..20}
 	validates :introduction, length: { maximum: 50 }
-	validates :postal_code, presence: true
+	validates :postal_code, presence: true, length: { minimum: 7 }
 	validates :prefecture, presence: true
 	validates :city, presence: true
 	validates :street, presence: true

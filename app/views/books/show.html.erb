@@ -32,9 +32,6 @@
 					<td><%= link_to "edit", edit_book_path %></td>
 					<td><%= link_to "destroy", book_path, method: :delete %></td>
 				<% end %>
-				<td>
-					コメント数 : <%= @book_show.book_comments.count %>
-				</td>
 			</tr>
 		</table>
 		<div class="col-xs-12" id="comments_<%= @book_show.id %>">
