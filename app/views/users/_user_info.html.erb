@@ -42,6 +42,8 @@
 					<%=link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-default follow"%>
 				</td>
 			<% end %>
+			<th></th>
+			<td><%= link_to "DMをする", chat_path(user.id) %></td>
 		<% end %>
 	</tr>
 </table>

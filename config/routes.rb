@@ -18,6 +18,10 @@ Rails.application.routes.draw do
 		resource :favorites, only: [:destroy, :create]
 	end
   get '/search' => 'search#search', as: 'search'
+
+  resources :chats, only: [:show]
+
+  mount ActionCable.server => '/cable'
   mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
