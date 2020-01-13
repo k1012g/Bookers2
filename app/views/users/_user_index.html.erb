@@ -15,10 +15,10 @@
 			<%= link_to "#{user.name}", user_path(user.id) %>
 		</td>
 		<td>
-			<%= user.followings.count %>
+			<%= link_to user.followings.count, user_following_path(user.id) %>
 		</td>
 		<td>
-			<%= user.followers.count %>
+			<%= link_to user.followers.count, user_follower_path(user.id) %>
 		</td>
 		<td>
 			<% if user != current_user %>

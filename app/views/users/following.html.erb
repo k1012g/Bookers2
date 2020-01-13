@@ -1,9 +1,12 @@
 <%= render 'layouts/header' %>
 <div class="container">
+	<h1><strong><em><%= @user.name %></em></strong> @<%= @user.id %></h1>
 	<h2><strong>フォロー中 <%= @following.count %>人</strong></h2>
 	<% if @following.blank? %>
-		<h3><strong>フォローしている人はいません。</strong></h3>
-		<%= link_to "フォローする人を探す", users_path %>
+		<% if @user == current_user %>
+			<h3><strong>フォローしている人はいません。</strong></h3>
+			<%= link_to "フォローする人を探す", users_path %>
+		<% end %>
 	<% else %>
 		<% @following.each do |f| %>
 			<table class="table" style="width: 500px;">
@@ -13,7 +16,7 @@
 					<th></th>
 				</tr>
 				<tr>
-					<td><%= f.id %></td>
+					<td>@<%= f.id %></td>
 					<td><%= link_to "#{f.name}", user_path(f.id) %></td>
 					<% if current_user != f %>
 						<% if f.followed_by?(current_user) %>
