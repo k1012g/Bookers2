@@ -2,6 +2,7 @@ document.addEventListener 'turbolinks:load', ->
   room_id = $('#messages').data('room_id')
   user_id = $('#messages').data('user_id')
   user_name = $('#messages').data('user_name')
+  user_talk_id = $('#messages').data('user_talk_id')
   App.chat = App.cable.subscriptions.create { channel: "ChatChannel", room_id: room_id, user_id: user_id },
   connected: ->
     # Called when the subscription is ready for use on the server
@@ -11,7 +12,6 @@ document.addEventListener 'turbolinks:load', ->
 
   received: (data) ->
     # Called when there's incoming data on the websocket for this channel
-    console.log($('#messages').data('user_name'))
     $('#messages').append('<strong>' + user_name + '</strong> : ' + data['message'] + '<br>')
 
   speak: (message) ->
